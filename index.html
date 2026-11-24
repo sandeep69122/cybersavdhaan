@@ -2,109 +2,246 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CyberSavdhaan helps Indians stay safe from online scams, fraud and digital threats.">
-  <title>CyberSavdhaan – Stay Alert. Stay Safe.</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #172033;
-      background: #f5f8fc;
-      line-height: 1.6;
-    }
-    header {
-      background: #10264a;
-      color: white;
-      padding: 22px 7%;
-    }
-    .brand { font-size: 25px; font-weight: bold; }
-    .tagline { color: #c9d8f0; font-size: 14px; }
-    .hero {
-      text-align: center;
-      padding: 65px 20px;
-      background: #e7f0ff;
-    }
-    .hero h1 { font-size: 38px; margin: 0 0 12px; }
-    .hero p { max-width: 620px; margin: auto; }
-    .section { padding: 35px 7%; }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 18px;
-    }
-    .card {
-      background: white;
-      padding: 22px;
-      border-radius: 12px;
-      box-shadow: 0 3px 14px #10264a12;
-    }
-    .card h3 { color: #174b91; margin-top: 0; }
-    footer {
-      background: #10264a;
-      color: white;
-      padding: 25px 7%;
-      text-align: center;
-    }
-    footer a { color: #d5e5ff; margin: 0 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07152d">
+<meta name="description" content="CyberSavdhaan - India's Cyber Crime News, Online Fraud Alerts and Digital Safety Awareness Portal.">
+<title>CyberSavdhaan | Stay Alert. Stay Safe.</title>
+
+<style>
+:root {
+  --navy:#07152d;
+  --navy2:#102746;
+  --red:#e63946;
+  --white:#ffffff;
+  --light:#f3f6fa;
+  --text:#19283d;
+  --muted:#64748b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:var(--light);color:var(--text)}
+a{text-decoration:none;color:inherit}
+.topbar{background:#040d1d;color:#dce5f3;padding:9px 5%;font-size:12px;display:flex;justify-content:space-between}
+header{background:var(--navy);color:white;padding:20px 5%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:27px;font-weight:900;letter-spacing:-1px}
+.logo span{color:#ff4655}
+.tagline{font-size:11px;color:#aabbd1;margin-top:5px}
+nav{background:#102746;color:white;padding:14px 5%;display:flex;gap:26px;flex-wrap:wrap;font-size:14px;font-weight:bold}
+nav a:hover{color:#ff5965}
+.breaking{background:var(--red);color:white;display:flex;align-items:center;overflow:hidden}
+.breaking strong{background:#a81725;padding:13px 18px;white-space:nowrap}
+.breaking marquee{padding:12px;font-size:13px}
+.container{max-width:1200px;margin:auto;padding:28px 20px}
+.hero{background:linear-gradient(115deg,#07152d,#173d67);color:white;border-radius:12px;padding:48px 35px;margin-bottom:28px}
+.hero small{color:#ff6570;font-weight:bold;letter-spacing:2px}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:16px 0}
+.hero p{color:#d0dcec;line-height:1.7;max-width:650px}
+.hero-buttons{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}
+.btn{padding:13px 20px;border-radius:5px;font-weight:bold;display:inline-block}
+.btn-red{background:var(--red);color:white}
+.btn-white{background:white;color:var(--navy)}
+.section-title{font-size:23px;margin:25px 0 18px;border-left:5px solid var(--red);padding-left:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:white;border:1px solid #e4eaf1;border-radius:9px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 25px #10274615}
+.card-top{height:145px;background:linear-gradient(135deg,#102746,#315c86);display:flex;align-items:center;justify-content:center;color:white;font-size:48px}
+.card-content{padding:19px}
+.category{font-size:11px;color:var(--red);font-weight:bold;text-transform:uppercase}
+.card h3{font-size:18px;line-height:1.4;margin:10px 0}
+.card p{font-size:13px;color:var(--muted);line-height:1.6}
+.read{display:inline-block;margin-top:15px;color:#d52c3a;font-size:13px;font-weight:bold}
+.alert{background:#fff1f1;border:1px solid #ffd0d0;padding:25px;border-radius:9px;display:flex;justify-content:space-between;gap:20px;align-items:center;margin:35px 0}
+.alert h2{color:#b51f2d;margin-bottom:8px}
+.alert p{font-size:14px;line-height:1.6}
+.alert-number{background:#b51f2d;color:white;padding:17px 22px;border-radius:8px;font-size:25px;font-weight:bold;white-space:nowrap}
+.tips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.tip{background:white;padding:20px;border-radius:8px;border:1px solid #e5eaf0}
+.tip .emoji{font-size:28px}
+.tip h3{font-size:15px;margin:12px 0 7px}
+.tip p{font-size:12px;color:var(--muted);line-height:1.6}
+footer{background:#040d1d;color:#c4d0df;padding:40px 5%;margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}
+footer h3{color:white;margin-bottom:15px}
+footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
+.copyright{border-top:1px solid #26374d;margin-top:25px;padding-top:20px;font-size:12px}
+.search{padding:10px;border-radius:5px;border:0;width:210px;max-width:100%}
+@media(max-width:750px){
+ header{align-items:flex-start;flex-direction:column}
+ nav{gap:17px;font-size:12px}
+ .grid{grid-template-columns:1fr}
+ .tips{grid-template-columns:repeat(2,1fr)}
+ .alert{flex-direction:column;align-items:flex-start}
+ .footer-grid{grid-template-columns:1fr}
+ .hero{padding:35px 22px}
+ .topbar{gap:8px;flex-wrap:wrap}
+}
+@media(max-width:380px){.tips{grid-template-columns:1fr}}
+</style>
 </head>
+
 <body>
-  <header>
-    <div class="brand">🛡️ CyberSavdhaan</div>
-    <div class="tagline">Stay Alert. Stay Safe. | सतर्क रहें • सुरक्षित रहें</div>
-  </header>
+<div class="topbar">
+ <span>🇮🇳 INDIA'S CYBER SAFETY INFORMATION PORTAL</span>
+ <span id="date"></span>
+</div>
 
-  <section class="hero">
-    <h1>Your Safety in the Digital World</h1>
-    <p>
-      Learn how to identify online scams, protect your phone
-      and stay safe on the internet.
-      <br><br>
-      ऑनलाइन धोखाधड़ी से बचें और डिजिटल दुनिया में सुरक्षित रहें।
-    </p>
-  </section>
+<header>
+ <div>
+  <div class="logo">Cyber<span>Savdhaan</span></div>
+  <div class="tagline">STAY ALERT. STAY INFORMED. STAY SAFE.</div>
+ </div>
+ <input class="search" type="search" id="search" placeholder="Search cyber safety...">
+</header>
 
-  <section class="section">
-    <h2>Explore Cyber Safety</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>🔗 Scam Link Awareness</h3>
-        <p>Learn how to identify suspicious links before clicking them.</p>
-      </div>
-      <div class="card">
-        <h3>📩 SMS Scam Awareness</h3>
-        <p>Understand fake messages, OTP fraud and phishing attempts.</p>
-      </div>
-      <div class="card">
-        <h3>📱 Mobile Tricks</h3>
-        <p>Discover useful smartphone tips and privacy settings.</p>
-      </div>
-      <div class="card">
-        <h3>🛡️ WhatsApp Safety</h3>
-        <p>Learn how to protect your WhatsApp account from fraud.</p>
-      </div>
-    </div>
-  </section>
+<nav>
+ <a href="#">HOME</a>
+ <a href="#news">CYBER NEWS</a>
+ <a href="#scams">SCAM ALERTS</a>
+ <a href="#tips">SAFETY TIPS</a>
+ <a href="#report">REPORT FRAUD</a>
+ <a href="#about">ABOUT US</a>
+</nav>
 
-  <section class="section">
-    <h2>Our Mission | हमारा उद्देश्य</h2>
-    <p>
-      CyberSavdhaan aims to make digital safety knowledge
-      simple and accessible to everyone in India.
-    </p>
-  </section>
+<div class="breaking">
+ <strong>BREAKING ALERT</strong>
+ <marquee>Stay alert against digital arrest scams • Never share your OTP or UPI PIN • Report financial cyber fraud immediately on 1930</marquee>
+</div>
 
-  <footer>
-    <p>CyberSavdhaan.in — Stay Alert. Stay Safe.</p>
-    <p>© 2026 CyberSavdhaan. All rights reserved.</p>
-    <p>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="disclaimer.html">Disclaimer</a>
-      <a href="contact.html">Contact</a>
-    </p>
-  </footer>
+<main class="container">
+
+<section class="hero">
+ <small>YOUR DIGITAL SAFETY STARTS HERE</small>
+ <h1>Think Before You Click.<br>Stay Safe Online.</h1>
+ <p>India mein badhte cyber crimes, online frauds aur digital scams ke baare mein latest awareness, news aur safety information ek hi jagah.</p>
+ <div class="hero-buttons">
+  <a href="#news" class="btn btn-red">Explore Cyber News →</a>
+  <a href="#report" class="btn btn-white">Report Cyber Fraud</a>
+ </div>
+</section>
+
+<h2 class="section-title" id="news">Latest Cyber Awareness</h2>
+<div class="grid" id="newsGrid">
+
+ <article class="card">
+  <div class="card-top">📱</div>
+  <div class="card-content">
+   <span class="category">UPI FRAUD</span>
+   <h3>UPI Payment Scams: How to Protect Your Money</h3>
+   <p>Learn how fake payment screenshots, collect requests and fraudulent links can put your money at risk.</p>
+   <a class="read" href="#tips">Read Safety Tips →</a>
+  </div>
+ </article>
+
+ <article class="card">
+  <div class="card-top">🚨</div>
+  <div class="card-content">
+   <span class="category">DIGITAL ARREST</span>
+   <h3>Digital Arrest Scams: Know the Warning Signs</h3>
+   <p>Understand how scammers impersonate law enforcement and pressure victims into transferring money.</p>
+   <a class="read" href="#tips">Learn More →</a>
+  </div>
+ </article>
+
+ <article class="card">
+  <div class="card-top">💬</div>
+  <div class="card-content">
+   <span class="category">WHATSAPP SCAM</span>
+   <h3>WhatsApp Job and Investment Fraud Alerts</h3>
+   <p>Be cautious of unknown job offers, suspicious investment promises and requests for advance payments.</p>
+   <a class="read" href="#tips">Stay Protected →</a>
+  </div>
+ </article>
+
+ <article class="card">
+  <div class="card-top">🔗</div>
+  <div class="card-content">
+   <span class="category">PHISHING</span>
+   <h3>Fake Links and Websites: Spot the Red Flags</h3>
+   <p>Check website addresses carefully before entering passwords, banking details or personal information.</p>
+   <a class="read" href="#tips">Read More →</a>
+  </div>
+ </article>
+
+ <article class="card">
+  <div class="card-top">🏦</div>
+  <div class="card-content">
+   <span class="category">BANKING FRAUD</span>
+   <h3>Bank KYC Update Scams: Don't Fall for Them</h3>
+   <p>Never share OTPs, PINs or banking passwords with callers claiming to be bank representatives.</p>
+   <a class="read" href="#tips">Know the Risks →</a>
+  </div>
+ </article>
+
+ <article class="card">
+  <div class="card-top">🎭</div>
+  <div class="card-content">
+   <span class="category">IDENTITY FRAUD</span>
+   <h3>Social Media Impersonation and Fake Profiles</h3>
+   <p>Learn how to identify fake accounts and protect your identity on social media.</p>
+   <a class="read" href="#tips">Protect Yourself →</a>
+  </div>
+ </article>
+
+</div>
+
+<section class="alert" id="report">
+ <div>
+  <h2>Victim of Online Financial Fraud?</h2>
+  <p>Immediately contact India's National Cyber Crime Helpline. Also report the incident through the official government portal.</p>
+  <a class="read" href="https://cybercrime.gov.in/" target="_blank" rel="noopener">Visit Official Cyber Crime Portal →</a>
+ </div>
+ <a class="alert-number" href="tel:1930">1930</a>
+</section>
+
+<h2 class="section-title" id="tips">Essential Cyber Safety Tips</h2>
+<div class="tips">
+ <div class="tip"><div class="emoji">🔐</div><h3>Protect Your OTP</h3><p>Never share your OTP, PIN or passwords with anyone.</p></div>
+ <div class="tip"><div class="emoji">🔗</div><h3>Check Every Link</h3><p>Avoid unknown links received through SMS, email or WhatsApp.</p></div>
+ <div class="tip"><div class="emoji">📲</div><h3>Secure Your Apps</h3><p>Download apps only from trusted official sources.</p></div>
+ <div class="tip"><div class="emoji">💳</div><h3>Secure Your Payments</h3><p>Never enter your UPI PIN to receive money.</p></div>
+</div>
+
+<section id="about">
+ <h2 class="section-title">About CyberSavdhaan</h2>
+ <p style="line-height:1.8;color:#64748b;font-size:14px">
+ CyberSavdhaan is an independent cyber safety awareness platform dedicated to educating people about online fraud, digital scams, cybersecurity and safe internet practices. We aim to make digital safety information accessible in Hindi and English.
+ </p>
+</section>
+
+</main>
+
+<footer>
+ <div class="footer-grid">
+  <div>
+   <h3>Cyber<span style="color:#ff4655">Savdhaan</span></h3>
+   <p>Making India safer through cyber awareness and digital education.</p>
+  </div>
+  <div>
+   <h3>Quick Links</h3>
+   <a href="#news">Cyber News</a>
+   <a href="#scams">Scam Alerts</a>
+   <a href="#tips">Safety Tips</a>
+  </div>
+  <div>
+   <h3>Important Links</h3>
+   <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener">National Cyber Crime Portal</a>
+   <a href="https://www.cybercrime.gov.in/" target="_blank" rel="noopener">Report Cyber Crime</a>
+   <a href="tel:1930">Helpline: 1930</a>
+  </div>
+ </div>
+ <div class="copyright">© 2026 CyberSavdhaan. Independent Cyber Safety Awareness Platform.</div>
+</footer>
+
+<script>
+document.getElementById("date").textContent =
+ new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"});
+
+document.getElementById("search").addEventListener("input",function(){
+ const query=this.value.toLowerCase();
+ document.querySelectorAll("#newsGrid .card").forEach(card=>{
+  card.style.display=card.innerText.toLowerCase().includes(query)?"":"none";
+ });
+});
+</script>
 </body>
 </html>
