@@ -13,7 +13,7 @@
   --navy:#07152d;
   --navy2:#102746;
   --red:#e63946;
-  --white:#ffffff;
+  --white:#fff;
   --light:#f3f6fa;
   --text:#19283d;
   --muted:#64748b;
@@ -65,6 +65,29 @@ footer h3{color:white;margin-bottom:15px}
 footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
 .copyright{border-top:1px solid #26374d;margin-top:25px;padding-top:20px;font-size:12px}
 .search{padding:10px;border-radius:5px;border:0;width:210px;max-width:100%}
+
+/* ARTICLE PAGE */
+#articlePage{display:none}
+.article-container{max-width:900px;margin:auto;padding:35px 20px}
+.back-btn{display:inline-block;background:var(--navy);color:white;padding:12px 18px;border-radius:5px;font-size:13px;font-weight:bold;margin-bottom:25px}
+.article-box{background:white;padding:35px;border-radius:10px;border:1px solid #e5eaf0}
+.article-category{color:var(--red);font-size:12px;font-weight:bold;text-transform:uppercase}
+.article-box h1{font-size:clamp(27px,5vw,40px);line-height:1.25;margin:15px 0}
+.article-meta{font-size:12px;color:var(--muted);margin-bottom:25px}
+.article-hero{background:linear-gradient(135deg,#102746,#315c86);height:180px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:65px;margin-bottom:28px}
+.article-content{font-size:16px;line-height:1.9;color:#35445a}
+.article-content h2{font-size:22px;color:var(--navy);margin:28px 0 10px;border-left:4px solid var(--red);padding-left:12px}
+.article-content p{margin:12px 0}
+.article-content ul{padding-left:25px;margin:12px 0}
+.article-content li{margin:8px 0}
+.article-content .warning{background:#fff1f1;padding:18px;border-left:4px solid var(--red);margin:22px 0;border-radius:5px}
+.article-content .safe{background:#edf8f1;padding:18px;border-left:4px solid #269b58;margin:22px 0;border-radius:5px}
+.article-content h3{margin-top:20px;color:var(--navy)}
+.article-not-found{text-align:center;padding:60px 20px;background:white;border-radius:10px}
+.article-not-found h2{margin-bottom:15px}
+.related-box{background:white;padding:25px;border-radius:9px;margin-top:25px}
+.related-box h2{font-size:20px;margin-bottom:15px}
+
 @media(max-width:750px){
  header{align-items:flex-start;flex-direction:column}
  nav{gap:17px;font-size:12px}
@@ -74,12 +97,15 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
  .footer-grid{grid-template-columns:1fr}
  .hero{padding:35px 22px}
  .topbar{gap:8px;flex-wrap:wrap}
+ .article-box{padding:22px 17px}
+ .article-container{padding:20px 12px}
 }
 @media(max-width:380px){.tips{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
+
 <div class="topbar">
  <span>🇮🇳 INDIA'S CYBER SAFETY INFORMATION PORTAL</span>
  <span id="date"></span>
@@ -87,19 +113,19 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
 
 <header>
  <div>
-  <div class="logo">Cyber<span>Savdhaan</span></div>
+  <a href="./" class="logo">Cyber<span>Savdhaan</span></a>
   <div class="tagline">STAY ALERT. STAY INFORMED. STAY SAFE.</div>
  </div>
  <input class="search" type="search" id="search" placeholder="Search cyber safety...">
 </header>
 
 <nav>
- <a href="#">HOME</a>
- <a href="#news">CYBER NEWS</a>
- <a href="#scams">SCAM ALERTS</a>
- <a href="#tips">SAFETY TIPS</a>
- <a href="#report">REPORT FRAUD</a>
- <a href="#about">ABOUT US</a>
+ <a href="./">HOME</a>
+ <a href="./#news">CYBER NEWS</a>
+ <a href="./#scams">SCAM ALERTS</a>
+ <a href="./#tips">SAFETY TIPS</a>
+ <a href="./#report">REPORT FRAUD</a>
+ <a href="./#about">ABOUT US</a>
 </nav>
 
 <div class="breaking">
@@ -107,6 +133,9 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
  <marquee>Stay alert against digital arrest scams • Never share your OTP or UPI PIN • Report financial cyber fraud immediately on 1930</marquee>
 </div>
 
+<!-- HOMEPAGE -->
+
+<div id="homePage">
 <main class="container">
 
 <section class="hero">
@@ -120,7 +149,8 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
 </section>
 
 <h2 class="section-title" id="news">Latest Cyber Awareness</h2>
-<div class="grid" id="scams">
+
+<div class="grid" id="newsGrid">
 
  <article class="card">
   <div class="card-top">📱</div>
@@ -128,7 +158,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">UPI FRAUD</span>
    <h3>UPI Payment Scams: How to Protect Your Money</h3>
    <p>Learn how fake payment screenshots, collect requests and fraudulent links can put your money at risk.</p>
-   <a class="read" href="news.html">Read Article →</a>
+   <a class="read" href="?article=upi-fraud">Read Article →</a>
   </div>
  </article>
 
@@ -138,7 +168,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">DIGITAL ARREST</span>
    <h3>Digital Arrest Scams: Know the Warning Signs</h3>
    <p>Understand how scammers impersonate law enforcement and pressure victims into transferring money.</p>
-   <a class="read" href="news.html">Read Article →</a>
+   <a class="read" href="?article=digital-arrest">Read Article →</a>
   </div>
  </article>
 
@@ -148,7 +178,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">WHATSAPP SCAM</span>
    <h3>WhatsApp Job and Investment Fraud Alerts</h3>
    <p>Be cautious of unknown job offers, suspicious investment promises and requests for advance payments.</p>
-   <a class="read" href="news.html">Stay Protected →</a>
+   <a class="read" href="?article=whatsapp-fraud">Read Article →</a>
   </div>
  </article>
 
@@ -158,7 +188,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">PHISHING</span>
    <h3>Fake Links and Websites: Spot the Red Flags</h3>
    <p>Check website addresses carefully before entering passwords, banking details or personal information.</p>
-   <a class="read" href="news.html">Read Article →</a>
+   <a class="read" href="?article=phishing">Read Article →</a>
   </div>
  </article>
 
@@ -168,7 +198,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">BANKING FRAUD</span>
    <h3>Bank KYC Update Scams: Don't Fall for Them</h3>
    <p>Never share OTPs, PINs or banking passwords with callers claiming to be bank representatives.</p>
-   <a class="read" href="news.html">Read Article →</a>
+   <a class="read" href="?article=bank-kyc">Read Article →</a>
   </div>
  </article>
 
@@ -178,7 +208,7 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
    <span class="category">IDENTITY FRAUD</span>
    <h3>Social Media Impersonation and Fake Profiles</h3>
    <p>Learn how to identify fake accounts and protect your identity on social media.</p>
-   <a class="read" href="news.html">Read Article →</a>
+   <a class="read" href="?article=fake-profile">Read Article →</a>
   </div>
  </article>
 
@@ -231,17 +261,308 @@ footer p,footer a{font-size:13px;line-height:2;color:#aabbd1;display:block}
  </div>
  <div class="copyright">© 2026 CyberSavdhaan. Independent Cyber Safety Awareness Platform.</div>
 </footer>
+</div>
+
+<!-- ARTICLE PAGE: Content changes according to URL -->
+
+<div id="articlePage">
+ <div class="article-container">
+  <a href="./" class="back-btn">← Back to CyberSavdhaan</a>
+  <div id="articleContent"></div>
+ </div>
+ <footer>
+  <div class="footer-grid">
+   <div><h3>Cyber<span style="color:#ff4655">Savdhaan</span></h3><p>Making India safer through cyber awareness and digital education.</p></div>
+   <div><h3>Quick Links</h3><a href="./">Home</a><a href="./#news">Cyber News</a></div>
+   <div><h3>Important Links</h3><a href="https://cybercrime.gov.in/" target="_blank" rel="noopener">Cyber Crime Portal</a><a href="tel:1930">Helpline: 1930</a></div>
+  </div>
+  <div class="copyright">© 2026 CyberSavdhaan. Independent Cyber Safety Awareness Platform.</div>
+ </footer>
+</div>
 
 <script>
+// DATE
 document.getElementById("date").textContent =
  new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"});
 
+// ALL ARTICLES
+const articles = {
+
+"upi-fraud": {
+ category:"UPI FRAUD",
+ icon:"📱",
+ title:"UPI Payment Scams: How to Protect Your Money",
+ content:`
+ <p><b>English:</b> UPI has made digital payments quick and convenient in India. However, cybercriminals use fake payment requests, fraudulent QR codes and misleading messages to trick users.</p>
+ <p><b>हिंदी:</b> UPI ने भारत में डिजिटल पेमेंट को आसान बनाया है, लेकिन साइबर अपराधी नकली पेमेंट रिक्वेस्ट, QR कोड और फर्जी मैसेज के जरिए लोगों को ठगते हैं।</p>
+
+ <h2>Common UPI Fraud Methods | UPI धोखाधड़ी के तरीके</h2>
+ <ul>
+ <li>Fake payment screenshots showing a payment that never happened.</li>
+ <li>Fraudulent collect requests asking you to enter your UPI PIN.</li>
+ <li>Fake QR codes that trick users into sending money.</li>
+ <li>Scammers pretending to be customer support representatives.</li>
+ </ul>
+
+ <h2>How to Stay Safe | सुरक्षित कैसे रहें?</h2>
+ <ul>
+ <li>Never enter your UPI PIN to receive money.</li>
+ <li>Always verify payment status inside your banking or UPI app.</li>
+ <li>Never share your OTP, UPI PIN or screen-sharing access.</li>
+ <li>Do not trust screenshots as proof of payment.</li>
+ <li>Reject unknown payment collection requests.</li>
+ </ul>
+
+ <div class="warning"><b>Important Alert:</b> Receiving money does not require entering your UPI PIN. UPI PIN is generally used to authorize payments.</div>
+
+ <h2>What to Do If You Lose Money?</h2>
+ <p>Immediately contact your bank and report suspected financial cyber fraud by calling 1930. You can also submit a complaint at the official National Cyber Crime Reporting Portal.</p>
+ <p><b>अगर आपके पैसे कट गए हैं:</b> तुरंत अपने बैंक से संपर्क करें, 1930 पर कॉल करें और cybercrime.gov.in पर शिकायत दर्ज करें।</p>
+ `
+},
+
+"digital-arrest": {
+ category:"DIGITAL ARREST",
+ icon:"🚨",
+ title:"Digital Arrest Scams: Know the Warning Signs",
+ content:`
+ <p><b>English:</b> Digital arrest is a cyber fraud technique in which criminals impersonate police officers, government officials or investigating agencies through phone or video calls.</p>
+ <p><b>हिंदी:</b> डिजिटल अरेस्ट एक साइबर ठगी है जिसमें अपराधी खुद को पुलिस, CBI या अन्य सरकारी एजेंसी का अधिकारी बताकर लोगों को डराते हैं।</p>
+
+ <h2>How Does This Scam Work?</h2>
+ <ul>
+ <li>You receive a call claiming your Aadhaar, bank account or identity is linked to a crime.</li>
+ <li>The caller may use a fake police uniform or video-call background.</li>
+ <li>You are threatened with arrest or legal action.</li>
+ <li>You are pressured to transfer money for supposed verification.</li>
+ <li>Criminals may demand that you remain on a video call.</li>
+ </ul>
+
+ <h2>Warning Signs | पहचान कैसे करें?</h2>
+ <ul>
+ <li>Threats of immediate arrest over a phone call.</li>
+ <li>Demands for money to clear an investigation.</li>
+ <li>Requests to transfer funds to a personal bank account.</li>
+ <li>Instructions to keep the conversation secret.</li>
+ </ul>
+
+ <div class="warning"><b>Remember:</b> A phone or video call cannot legally place you under digital arrest. Do not transfer money because someone threatens you.</div>
+
+ <h2>What Should You Do?</h2>
+ <p>Disconnect the call. Do not share personal or banking information. Verify claims independently using official government contact details. Report financial cyber fraud at 1930.</p>
+ <p>घबराएं नहीं। कॉल काटें, पैसे न भेजें और घटना की शिकायत संबंधित अधिकारियों से करें।</p>
+ `
+},
+
+"whatsapp-fraud": {
+ category:"WHATSAPP SCAM",
+ icon:"💬",
+ title:"WhatsApp Job and Investment Fraud Alerts",
+ content:`
+ <p><b>English:</b> Fraudsters frequently use WhatsApp to circulate fake work-from-home jobs, investment schemes and part-time earning opportunities.</p>
+ <p><b>हिंदी:</b> ठग WhatsApp पर घर बैठे नौकरी, पार्ट टाइम कमाई और निवेश के नाम पर फर्जी ऑफर भेजकर लोगों को निशाना बनाते हैं।</p>
+
+ <h2>Common WhatsApp Scams</h2>
+ <ul>
+ <li>Fake data-entry and work-from-home jobs.</li>
+ <li>Like-and-subscribe tasks promising easy income.</li>
+ <li>Fake investment groups showing manipulated profits.</li>
+ <li>Requests for registration fees or security deposits.</li>
+ <li>Messages containing suspicious APK files and unknown links.</li>
+ </ul>
+
+ <h2>Warning Signs</h2>
+ <ul>
+ <li>Guaranteed high returns with no risk.</li>
+ <li>Payment required before getting a job.</li>
+ <li>Pressure to deposit more money to withdraw earnings.</li>
+ <li>Unverified companies and anonymous recruiters.</li>
+ </ul>
+
+ <h2>How to Protect Yourself</h2>
+ <p>Verify the company through its official website and contact details. Never pay a stranger to unlock a job or withdraw supposed earnings. Avoid installing unknown applications.</p>
+
+ <div class="warning"><b>Alert:</b> Never share OTPs, banking passwords or screen access with unknown WhatsApp contacts.</div>
+
+ <p>यदि आपके साथ आर्थिक धोखाधड़ी हुई है तो तुरंत 1930 पर शिकायत करें।</p>
+ `
+},
+
+"phishing": {
+ category:"PHISHING",
+ icon:"🔗",
+ title:"Fake Links and Websites: Spot the Red Flags",
+ content:`
+ <p><b>English:</b> Phishing is a cyberattack in which criminals create fake websites, emails or messages to steal passwords, financial information and personal details.</p>
+ <p><b>हिंदी:</b> फिशिंग में अपराधी नकली वेबसाइट और मैसेज बनाकर आपकी बैंकिंग जानकारी, पासवर्ड और निजी जानकारी चुराने की कोशिश करते हैं।</p>
+
+ <h2>How to Identify Fake Websites</h2>
+ <ul>
+ <li>Look carefully at the complete website address.</li>
+ <li>Watch for misspelled brand names and unusual domain extensions.</li>
+ <li>Be cautious of urgent messages asking you to update KYC.</li>
+ <li>Do not trust links simply because they have an HTTPS lock symbol.</li>
+ <li>Check whether the website belongs to the genuine organization.</li>
+ </ul>
+
+ <h2>Common Phishing Messages</h2>
+ <ul>
+ <li>Your bank account will be blocked today.</li>
+ <li>Claim your free reward immediately.</li>
+ <li>Update your KYC using this link.</li>
+ <li>Your parcel is waiting for delivery payment.</li>
+ </ul>
+
+ <h2>Protection Tips</h2>
+ <p>Type official website addresses manually instead of clicking suspicious links. Use two-factor authentication and never enter banking credentials on an unverified website.</p>
+
+ <div class="safe"><b>Safety Tip:</b> If a message creates panic or demands immediate action, stop and verify it independently.</div>
+ `
+},
+
+"bank-kyc": {
+ category:"BANKING FRAUD",
+ icon:"🏦",
+ title:"Bank KYC Update Scams: Don't Fall for Them",
+ content:`
+ <p><b>English:</b> Fraudsters impersonate bank employees and send fake KYC update messages to steal banking credentials and money.</p>
+ <p><b>हिंदी:</b> ठग बैंक कर्मचारी बनकर लोगों को KYC अपडेट करने के नाम पर फर्जी कॉल और SMS भेजते हैं।</p>
+
+ <h2>How the Fraud Happens</h2>
+ <ul>
+ <li>You receive an SMS claiming your bank account will be blocked.</li>
+ <li>A caller pretends to be a bank representative.</li>
+ <li>You are asked to click a suspicious link.</li>
+ <li>You may be asked for OTP, PIN or card details.</li>
+ <li>A malicious application may be suggested for installation.</li>
+ </ul>
+
+ <h2>Important Safety Rules</h2>
+ <ul>
+ <li>Never share OTP or ATM PIN with anyone.</li>
+ <li>Do not install APK files sent by unknown callers.</li>
+ <li>Contact your bank using the official number on its website or card.</li>
+ <li>Visit your bank branch if you are unsure about a KYC request.</li>
+ <li>Never provide remote access to your phone.</li>
+ </ul>
+
+ <div class="warning"><b>Remember:</b> Never share confidential banking credentials with callers claiming to represent your bank.</div>
+
+ <p>अगर बैंकिंग फ्रॉड हो जाए तो तुरंत बैंक को सूचना दें और 1930 पर शिकायत करें।</p>
+ `
+},
+
+"fake-profile": {
+ category:"IDENTITY FRAUD",
+ icon:"🎭",
+ title:"Social Media Impersonation and Fake Profiles",
+ content:`
+ <p><b>English:</b> Fake social media profiles are created using stolen photographs, names and personal information. Criminals use these accounts to deceive friends, family members and followers.</p>
+ <p><b>हिंदी:</b> सोशल मीडिया पर नकली प्रोफाइल बनाकर अपराधी आपकी फोटो और नाम का इस्तेमाल करके दोस्तों और रिश्तेदारों से पैसे मांग सकते हैं।</p>
+
+ <h2>Common Types of Impersonation</h2>
+ <ul>
+ <li>Fake profiles using another person's photographs.</li>
+ <li>Cloned accounts sending money requests to contacts.</li>
+ <li>Fake customer-care accounts asking for personal information.</li>
+ <li>Impersonation accounts spreading misleading information.</li>
+ </ul>
+
+ <h2>How to Protect Your Identity</h2>
+ <ul>
+ <li>Set social media accounts to appropriate privacy settings.</li>
+ <li>Enable two-factor authentication.</li>
+ <li>Avoid sharing sensitive personal information publicly.</li>
+ <li>Verify unusual money requests through a separate phone call.</li>
+ <li>Report fake accounts to the relevant social media platform.</li>
+ </ul>
+
+ <h2>What If Someone Creates Your Fake Profile?</h2>
+ <p>Save screenshots and the profile URL. Report the account using the platform's impersonation reporting option. Inform your contacts so they do not respond to fraudulent requests.</p>
+
+ <div class="safe"><b>Safety Tip:</b> Always verify an unexpected request for money, even if it comes from a familiar profile picture.</div>
+ `
+}
+
+};
+
+// DISPLAY SELECTED ARTICLE
+function showArticle() {
+ const params = new URLSearchParams(window.location.search);
+ const id = params.get("article");
+
+ const home = document.getElementById("homePage");
+ const page = document.getElementById("articlePage");
+ const search = document.getElementById("search");
+ const breaking = document.querySelector(".breaking");
+
+ if (!id) {
+   home.style.display = "block";
+   page.style.display = "none";
+   search.style.display = "block";
+   breaking.style.display = "flex";
+   document.title = "CyberSavdhaan | Stay Alert. Stay Safe.";
+   return;
+ }
+
+ const article = articles[id];
+
+ home.style.display = "none";
+ page.style.display = "block";
+ search.style.display = "none";
+ breaking.style.display = "none";
+
+ if (!article) {
+   document.getElementById("articleContent").innerHTML = `
+    <div class="article-not-found">
+      <h2>Article Not Found!</h2>
+      <p>The article you are looking for does not exist.</p>
+      <a href="./" class="back-btn">Return to Homepage</a>
+    </div>`;
+   document.title = "Article Not Found | CyberSavdhaan";
+   window.scrollTo(0,0);
+   return;
+ }
+
+ document.title = article.title + " | CyberSavdhaan";
+
+ document.getElementById("articleContent").innerHTML = `
+  <article class="article-box">
+   <span class="article-category">${article.category}</span>
+   <h1>${article.title}</h1>
+   <div class="article-meta">CyberSavdhaan Awareness Desk | Hindi & English</div>
+   <div class="article-hero">${article.icon}</div>
+   <div class="article-content">
+    ${article.content}
+   </div>
+   <div class="warning" style="margin-top:30px">
+    <b>Report Cyber Financial Fraud:</b><br>
+    Call National Cyber Crime Helpline <b>1930</b> immediately.
+    <br><a href="https://cybercrime.gov.in/" target="_blank" rel="noopener" style="color:#c72535;font-weight:bold">Official Cyber Crime Portal →</a>
+   </div>
+  </article>
+  <div class="related-box">
+   <h2>More Cyber Safety Articles</h2>
+   <p>Explore more articles to stay informed and protected.</p>
+   <a class="read" href="./">← Explore All Articles</a>
+  </div>
+ `;
+
+ window.scrollTo(0,0);
+}
+
+// SEARCH FUNCTION
 document.getElementById("search").addEventListener("input",function(){
- const query=this.value.toLowerCase();
+ const query=this.value.toLowerCase().trim();
  document.querySelectorAll("#newsGrid .card").forEach(card=>{
   card.style.display=card.innerText.toLowerCase().includes(query)?"":"none";
  });
 });
+
+// HANDLE ARTICLE LINKS AND BROWSER BACK/FORWARD
+window.addEventListener("popstate",showArticle);
+showArticle();
+
 </script>
 </body>
 </html>
