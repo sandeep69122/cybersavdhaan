@@ -1,0 +1,182 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Safety Quiz | CyberSavdhaan</title>
+  <meta name="description" content="Test your cyber safety knowledge with the CyberSavdhaan interactive quiz.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #19283d;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #07152d;
+      color: white;
+      padding: 22px 8%;
+    }
+
+    header h1 {
+      margin-bottom: 12px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #e63946;
+    }
+
+    .hero {
+      background: #102746;
+      color: white;
+      text-align: center;
+      padding: 45px 20px;
+    }
+
+    .hero h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 35px auto;
+      padding: 0 18px;
+    }
+
+    .quiz-box {
+      background: white;
+      padding: 28px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .progress {
+      color: #64748b;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      font-size: 21px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: #f3f6fa;
+      border: 2px solid #dce3ed;
+      padding: 13px;
+      margin: 10px 0;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 16px;
+      color: #19283d;
+    }
+
+    .option:hover:not(:disabled) {
+      border-color: #e63946;
+    }
+
+    .option:disabled {
+      cursor: default;
+      opacity: 1;
+    }
+
+    .option.correct {
+      background: #e4f7eb;
+      border-color: #198754;
+    }
+
+    .option.wrong {
+      background: #ffe8e8;
+      border-color: #e63946;
+    }
+
+    .feedback {
+      margin-top: 15px;
+      font-weight: bold;
+      min-height: 25px;
+    }
+
+    .btn {
+      background: #e63946;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background: #c92d39;
+    }
+
+    .result {
+      text-align: center;
+    }
+
+    .result h2 {
+      color: #e63946;
+      margin-bottom: 12px;
+    }
+
+    .result p {
+      margin: 10px 0;
+    }
+
+    footer {
+      background: #07152d;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      margin-top: 40px;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    @media (max-width: 600px) {
+      .quiz-box {
+        padding: 20px;
+      }
+
+      .hero h2 {
+        font-size: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>CyberSavdhaan</h1>
+  <nav
