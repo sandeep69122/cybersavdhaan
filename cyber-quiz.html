@@ -2,181 +2,365 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyber Safety Quiz | CyberSavdhaan</title>
-  <meta name="description" content="Test your cyber safety knowledge with the CyberSavdhaan interactive quiz.">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cyber Safety Quiz | CyberSavdhaan</title>
+<meta name="description" content="Test your cyber safety knowledge with CyberSavdhaan.">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f3f6fa;
-      color: #19283d;
-      line-height: 1.6;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f3f6fa;
+  color: #19283d;
+  line-height: 1.6;
+}
 
-    header {
-      background: #07152d;
-      color: white;
-      padding: 22px 8%;
-    }
+header {
+  background: #07152d;
+  color: white;
+  padding: 22px 8%;
+}
 
-    header h1 {
-      margin-bottom: 12px;
-    }
+header h1 {
+  margin-bottom: 12px;
+}
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    nav a:hover {
-      color: #e63946;
-    }
+nav a:hover {
+  color: #e63946;
+}
 
-    .hero {
-      background: #102746;
-      color: white;
-      text-align: center;
-      padding: 45px 20px;
-    }
+.hero {
+  background: #102746;
+  color: white;
+  text-align: center;
+  padding: 45px 20px;
+}
 
-    .hero h2 {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
+.hero h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
 
-    .container {
-      max-width: 750px;
-      margin: 35px auto;
-      padding: 0 18px;
-    }
+.container {
+  max-width: 750px;
+  margin: 35px auto;
+  padding: 0 18px;
+}
 
-    .quiz-box {
-      background: white;
-      padding: 28px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    }
+.quiz-box {
+  background: white;
+  padding: 28px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
 
-    .progress {
-      color: #64748b;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+.progress {
+  color: #64748b;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 
-    .question {
-      font-size: 21px;
-      margin-bottom: 20px;
-    }
+.question {
+  font-size: 21px;
+  margin-bottom: 20px;
+}
 
-    .option {
-      display: block;
-      width: 100%;
-      text-align: left;
-      background: #f3f6fa;
-      border: 2px solid #dce3ed;
-      padding: 13px;
-      margin: 10px 0;
-      border-radius: 7px;
-      cursor: pointer;
-      font-size: 16px;
-      color: #19283d;
-    }
+.option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #f3f6fa;
+  border: 2px solid #dce3ed;
+  padding: 13px;
+  margin: 10px 0;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #19283d;
+}
 
-    .option:hover:not(:disabled) {
-      border-color: #e63946;
-    }
+.option:hover:not(:disabled) {
+  border-color: #e63946;
+}
 
-    .option:disabled {
-      cursor: default;
-      opacity: 1;
-    }
+.option:disabled {
+  cursor: default;
+  opacity: 1;
+}
 
-    .option.correct {
-      background: #e4f7eb;
-      border-color: #198754;
-    }
+.option.correct {
+  background: #e4f7eb;
+  border-color: #198754;
+}
 
-    .option.wrong {
-      background: #ffe8e8;
-      border-color: #e63946;
-    }
+.option.wrong {
+  background: #ffe8e8;
+  border-color: #e63946;
+}
 
-    .feedback {
-      margin-top: 15px;
-      font-weight: bold;
-      min-height: 25px;
-    }
+.feedback {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 25px;
+}
 
-    .btn {
-      background: #e63946;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 6px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 20px;
-    }
+.btn {
+  background: #e63946;
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
 
-    .btn:hover {
-      background: #c92d39;
-    }
+.btn:hover {
+  background: #c92d39;
+}
 
-    .result {
-      text-align: center;
-    }
+.result {
+  text-align: center;
+}
 
-    .result h2 {
-      color: #e63946;
-      margin-bottom: 12px;
-    }
+.result h2 {
+  color: #e63946;
+  margin-bottom: 12px;
+}
 
-    .result p {
-      margin: 10px 0;
-    }
+.result p {
+  margin: 10px 0;
+}
 
-    footer {
-      background: #07152d;
-      color: white;
-      text-align: center;
-      padding: 22px;
-      margin-top: 40px;
-    }
+footer {
+  background: #07152d;
+  color: white;
+  text-align: center;
+  padding: 22px;
+  margin-top: 40px;
+}
 
-    [hidden] {
-      display: none !important;
-    }
+[hidden] {
+  display: none !important;
+}
 
-    @media (max-width: 600px) {
-      .quiz-box {
-        padding: 20px;
-      }
+@media (max-width: 600px) {
+  .quiz-box {
+    padding: 20px;
+  }
 
-      .hero h2 {
-        font-size: 25px;
-      }
-    }
-  </style>
+  .hero h2 {
+    font-size: 25px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>CyberSavdhaan</h1>
-  <nav
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="news.html">CYBER NEWS</a>
+    <a href="safety-tips.html">SAFETY TIPS</a>
+    <a href="fraud-awareness.html">FRAUD AWARENESS</a>
+    <a href="scam-alerts.html">SCAM ALERTS</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h2>Cyber Safety Quiz</h2>
+  <p>Test your knowledge and become smarter about online safety!</p>
+</section>
+
+<main class="container">
+  <section class="quiz-box">
+
+    <div id="quizArea">
+      <p class="progress" id="progress"></p>
+      <h2 class="question" id="question"></h2>
+      <div id="options"></div>
+      <p class="feedback" id="feedback" aria-live="polite"></p>
+      <button class="btn" id="nextBtn" hidden>Next Question</button>
+    </div>
+
+    <div class="result" id="result" hidden>
+      <h2>Quiz Completed! 🎉</h2>
+      <p id="scoreText"></p>
+      <p id="message"></p>
+      <button class="btn" id="restartBtn">Try Again</button>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 CyberSavdhaan. Stay Safe. Stay Aware.</p>
+</footer>
+
+<script>
+const questions = [
+  {
+    question: "1. Should you share your OTP with anyone?",
+    options: ["Yes, with bank staff", "No, never share OTP", "Only with friends", "On phone calls"],
+    answer: 1,
+    explanation: "Never share your OTP with anyone."
+  },
+  {
+    question: "2. What should you do with a suspicious link?",
+    options: ["Click it immediately", "Forward it to friends", "Avoid clicking it", "Enter bank details"],
+    answer: 2,
+    explanation: "Avoid unknown links and verify the sender."
+  },
+  {
+    question: "3. What is a strong password?",
+    options: ["123456", "Your name", "password123", "A long, unique password"],
+    answer: 3,
+    explanation: "Use a long, unique password for every account."
+  },
+  {
+    question: "4. What should you do after online financial fraud in India?",
+    options: ["Ignore it", "Call 1930 promptly", "Share your PIN", "Wait"],
+    answer: 1,
+    explanation: "Call 1930 promptly and report at cybercrime.gov.in."
+  },
+  {
+    question: "5. Is it safe to enter your UPI PIN to receive money?",
+    options: ["Yes, always", "Only for large payments", "No, never", "If someone asks"],
+    answer: 2,
+    explanation: "You do not need your UPI PIN to receive money."
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let answered = false;
+
+const progress = document.getElementById("progress");
+const question = document.getElementById("question");
+const options = document.getElementById("options");
+const feedback = document.getElementById("feedback");
+const nextBtn = document.getElementById("nextBtn");
+const quizArea = document.getElementById("quizArea");
+const result = document.getElementById("result");
+
+function showQuestion() {
+  answered = false;
+  const q = questions[currentQuestion];
+
+  progress.textContent =
+    "Question " + (currentQuestion + 1) + " of " + questions.length;
+
+  question.textContent = q.question;
+  options.innerHTML = "";
+  feedback.textContent = "";
+  nextBtn.hidden = true;
+
+  q.options.forEach((option, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "option";
+    button.textContent = option;
+    button.addEventListener("click", () => selectAnswer(index));
+    options.appendChild(button);
+  });
+}
+
+function selectAnswer(selected) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[currentQuestion];
+  const buttons = options.querySelectorAll(".option");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === q.answer) {
+      button.classList.add("correct");
+    }
+
+    if (index === selected && selected !== q.answer) {
+      button.classList.add("wrong");
+    }
+  });
+
+  if (selected === q.answer) {
+    score++;
+    feedback.textContent = "Correct! " + q.explanation;
+    feedback.style.color = "#198754";
+  } else {
+    feedback.textContent = "Not quite. " + q.explanation;
+    feedback.style.color = "#e63946";
+  }
+
+  nextBtn.hidden = false;
+  nextBtn.textContent =
+    currentQuestion === questions.length - 1
+      ? "See My Result"
+      : "Next Question";
+}
+
+nextBtn.addEventListener("click", () => {
+  currentQuestion++;
+
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    showResult();
+  }
+});
+
+function showResult() {
+  quizArea.hidden = true;
+  result.hidden = false;
+
+  document.getElementById("scoreText").textContent =
+    "Your Score: " + score + " / " + questions.length;
+
+  let message = "Keep learning and stay alert online!";
+
+  if (score === questions.length) {
+    message = "Excellent! You are a Cyber Safety Champion!";
+  } else if (score >= 3) {
+    message = "Good job! Keep improving your cyber safety knowledge.";
+  }
+
+  document.getElementById("message").textContent = message;
+}
+
+document.getElementById("restartBtn").addEventListener("click", () => {
+  currentQuestion = 0;
+  score = 0;
+  result.hidden = true;
+  quizArea.hidden = false;
+  showQuestion();
+});
+
+showQuestion();
+</script>
+
+</body>
+</html>
