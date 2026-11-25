@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Check suspicious SMS, WhatsApp messages and emails for common online scam warning signs with CyberSavdhaan.">
+  <meta name="theme-color" content="#07152d">
+  <title>Scam Message Checker | CyberSavdhaan</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f6fa;
+      color: #19283d;
+    }
+    header {
+      background: #07152d;
+      color: white;
+      padding: 22px 5%;
+    }
+    header a { color: white; text-decoration: none; font-size: 23px; font-weight: 900; }
+    header span { color: #ff4655; }
+    nav {
+      background: #102746;
+      padding: 13px 5%;
+    }
+    nav a { color: white; text-decoration: none; font-weight: bold; }
+    main { max-width: 850px; margin: 35px auto; padding: 0 18px; }
+    .panel {
+      background: white;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 5px 22px #10274612;
+    }
+    h1 { color: #07152d; font-size: 30px; margin-bottom: 12px; }
+    .intro { color: #64748b; line-height: 1.7; margin-bottom: 22px; }
+    label { display: block; font-weight: bold; margin-bottom: 9px; }
+    textarea {
+      width: 100%;
+      min-height: 170px;
+      padding: 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font: inherit;
+      resize: vertical;
+    }
+    textarea:focus { outline: 2px solid #315c86; border-color: #315c86; }
+    button {
+      border: 0;
+      background: #e63946;
+      color: white;
+      padding: 13px 20px;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover { background: #b51f2d; }
+    .clear { background: #102746; margin-left: 7px; }
+    #result {
+      display: none;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 8px;
+      background: #f3f6fa;
+      border: 1px solid #dbe3ed;
+    }
+    #result h2 { margin-bottom: 12px; font-size: 21px; }
+    #result p { line-height: 1.7; margin: 8px 0; }
+    #result ul { padding-left: 22px; line-height: 1.8; }
+    .notice {
+      margin-top: 20px;
+      padding: 15px;
+      background: #fff1f1;
+      border-left: 4px solid #e63946;
+      line-height: 1.7;
+    }
+    .back { display: inline-block; margin-top: 22px; color: #c72535; font-weight: bold; text-decoration: none; }
+    footer { text-align: center; padding: 25px; color: #64748b; font-size: 13px; }
+    @media(max-width: 550px) {
+      .panel { padding: 20px 16px; }
+      h1 { font-size: 25px; }
+      .clear { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="./">Cyber<span>Savdhaan</span></a>
+  </header>
+
+  <nav><a href="./">← Back to Homepage</a></nav>
+
+  <main>
+    <section class="panel">
+      <h1>🔍 Scam Message Checker</h1>
+      <p class="intro">
+        कोई संदिग्ध SMS, WhatsApp message या email मिला है?
+        उसे नीचे paste करें। यह tool common scam warning signs की जांच करेगा।
+      </p>
+
+      <label for="message">अपना suspicious message यहाँ paste करें:</label>
+      <textarea id="message" maxlength="5000" placeholder="यहाँ SMS, WhatsApp या email का message paste करें..."></textarea>
+
+      <button id="checkBtn" type="button">Check Message</button>
+      <button class="clear" id="clearBtn" type="button">Clear</button>
+
+      <div id="result" aria-live="polite"></div>
+
+      <div class="notice">
+        <b>जरूरी सूचना:</b> यह एक basic awareness checker है।
+        यह केवल सामान्य warning signs पहचानता है, किसी message के असली या नकली होने की पक्की पुष्टि नहीं करता।
+        कोई OTP, UPI PIN या password यहाँ paste न करें।
+      </div>
+
+      <a class="back" href="./">← CyberSavdhaan Homepage</a>
+    </section>
+  </main>
+
+  <footer>© 2026 CyberSavdhaan. Stay Alert. Stay Safe.</footer>
+
+  <script>
+    const messageBox = document.getElementById("message");
+    const result = document.getElementById("result");
+
+    const warningPatterns = [
+      { pattern: /otp|one.time.password|verification code/i, reason: "OTP या verification code माँगा जा रहा है। इसे किसी के साथ साझा न करें।" },
+      { pattern: /upi pin|atm pin|card pin|cvv/i, reason: "UPI PIN, ATM PIN या CVV जैसी संवेदनशील जानकारी का उल्लेख है। इन्हें साझा न करें।" },
+      { pattern: /urgent|immediately|right now|तुरंत|अभी करें|जल्दी करें/i, reason: "जल्दी कार्रवाई करने का दबाव बनाया जा रहा है। पहले स्वतंत्र रूप से जांचें।" },
+      { pattern: /account.*(block|suspend| बंद)|kyc.*(expire|update|बंद)/i, reason: "Account block या KYC बंद होने की धमकी हो सकती है। अपने बैंक के आधिकारिक माध्यम से जांचें।" },
+      { pattern: /click here|verify now|update now|क्लिक करें|यहाँ क्लिक/i, reason: "लिंक पर क्लिक करने का आग्रह है। लिंक खोले बिना आधिकारिक वेबसाइट खुद टाइप करके जांचें।" },
+      { pattern: /lottery|winner|prize|reward|इनाम|लॉटरी|जीत/i, reason: "इनाम या लॉटरी का दावा किया जा रहा है। ऐसे दावों से सावधान रहें।" },
+      { pattern: /investment|guaranteed profit|double your money|मुनाफा|पैसा दोगुना/i, reason: "गारंटीड मुनाफे या निवेश का लालच दिया जा सकता है। निवेश से पहले जांच करें।" },
+      { pattern: /send money|transfer money|pay.*fee|भेजें|जमा करें|पेमेंट करें/i, reason: "पैसे भेजने या फीस जमा करने की मांग है। भुगतान से पहले पहचान की पुष्टि करें।" },
+      { pattern: /remote access|screen share|anydesk|teamviewer/i, reason: "Remote access या screen sharing का संकेत है। अनजान व्यक्ति को फोन का access न दें।" },
+      { pattern: /apk|install.*app|download.*app/i, reason: "App या APK install करने को कहा जा सकता है। अनजान स्रोत से app install न करें।" }
+    ];
+
+    document.getElementById("checkBtn").addEventListener("click", function () {
+      const message = messageBox.value.trim();
+
+      if (!message) {
+        result.style.display = "block";
+        result.innerHTML = "<h2>पहले message paste करें</h2><p>जांच के लिए कोई SMS, WhatsApp या email message लिखें।</p>";
+        return;
+      }
+
+      const matches = warningPatterns.filter(item => item.pattern.test(message));
+
+      let level = "कम संकेत मिले";
+      let heading = "कुछ सामान्य warning signs नहीं मिले";
+      let advice = "फिर भी sender की पहचान और website address खुद verify करें।";
+
+      if (matches.length >= 3) {
+        level = "कई warning signs मिले";
+        heading = "सावधान रहें — कई जोखिम संकेत मिले!";
+        advice = "पैसे न भेजें, लिंक न खोलें और sender की पहचान अलग माध्यम से verify करें।";
+      } else if (matches.length > 0) {
+        level = "कुछ warning signs मिले";
+        heading = "सावधानी जरूरी है!";
+        advice = "Message को verify किए बिना कोई payment या जानकारी साझा न करें।";
+      }
+
+      const list = matches.length
+        ? "<ul>" + matches.map(item => "<li>" + item.reason + "</li>").join("") + "</ul>"
+        : "<p>इस checker को दिए गए सामान्य patterns में कोई स्पष्ट संकेत नहीं मिला। इसका मतलब यह नहीं कि message सुरक्षित है।</p>";
+
+      result.style.display = "block";
+      result.innerHTML =
+        "<h2>" + heading + "</h2>" +
+        "<p><b>Result:</b> " + level + "</p>" +
+        list +
+        "<p><b>सलाह:</b> " + advice + "</p>" +
+        "<p><b>संदेह हो तो:</b> बैंक के आधिकारिक नंबर से संपर्क करें। वित्तीय साइबर धोखाधड़ी होने पर 1930 पर कॉल करें या cybercrime.gov.in पर शिकायत करें।</p>";
+      result.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      messageBox.value = "";
+      result.style.display = "none";
+      result.innerHTML = "";
+      messageBox.focus();
+    });
+  </script>
+</body>
+</html>
